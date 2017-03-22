@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MMORPS</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <h1>Massively Multiplayer Online Rock, Paper, Scissors!</h1>
+
+    <p><%= session[:message] %></p>
+
+    <h2>Score</h2>
+      <h3>
+        Player: <%= session[:player_score] %><br>
+        Computer: <%= session[:computer_score] %>
+      </h3>
+
+    <% if session[:game_winner] == nil %>
+      <form action="/" method="post">
+        <h2>Choose:
+          <input type="submit" name="choice" value="Rock">
+          <input type="submit" name="choice" value="Paper">
+          <input type="submit" name="choice" value="Scissors">
+        </h2>
+      </form>
+    <% else %>
+    <p><%=session[:game_winner] %></p>
+      <form action="/reset" method="post">
+        <input type="submit" value="Play again">
+      </form>
+    <% end %>
+
+  </body>
+</html>
